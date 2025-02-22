@@ -15,3 +15,7 @@ def HomeView(request):
     list = ItemList.objects.all()
     review = Feedback.objects.all()
     return render(request, 'home.html', {'items': items, 'list': list, 'review': review})
+
+def AboutView(request):
+    data = AboutUs.objects.all()
+    return render(request, 'about.html', {'data': data})
