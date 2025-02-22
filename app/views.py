@@ -19,3 +19,8 @@ def HomeView(request):
 def AboutView(request):
     data = AboutUs.objects.all()
     return render(request, 'about.html', {'data': data})
+
+def MenuView(request):
+    items = Items.objects.all()
+    list = ItemList.objects.all()
+    return render(request, 'menu.html', {'items': items, 'list': list})
