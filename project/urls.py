@@ -26,4 +26,10 @@ from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',HomeView,name="Home"),
+    path('book_table/',BookTableView,name="Book_Table"),
+    path('book_table_redirect/', views.book_table_redirect, name='book_table_redirect'),
+    path('menu',MenuView,name="Menu"),
+    path('about',AboutView,name="About"),
+    path('feedback',FeedbackView,name="Feedback"),
 ]
