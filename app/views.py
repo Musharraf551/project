@@ -10,3 +10,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 
 # Create your views here.
+def HomeView(request):
+    items = Items.objects.all()
+    list = ItemList.objects.all()
+    review = Feedback.objects.all()
+    return render(request, 'home.html', {'items': items, 'list': list, 'review': review})
