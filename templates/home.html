@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block home_status %}active{% endblock home_status %}
+{% load static %}
+{% block slider %}
+<div class="login-section">
+  {% if user.is_authenticated %}
+    <a href="{% url 'dashboard' %}" class="btn btn-primary">Go to Dashboard</a>
+  {% else %}
+    <a href="{% url 'login' %}" class="btn btn-primary">Login</a>
+    <a href="{% url 'signup' %}" class="btn btn-secondary">Sign Up</a>
+  {% endif %}
+</div>
+
+    <!-- slider section -->
+    <section class="slider_section ">
+      <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container ">
+              <div class="row">
+                <div class="col-md-7 col-lg-6 ">
+                  <div class="detail-box">
+                    <h1>
+                      Fast Food Cafe
+                    </h1>
+                    <p>
+                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                    </p>
+                    {% if not user.is_authenticated %}
+                    <div class="btn-box">
+                      <a href="{% url "login" %}" class="btn1">
+                        User Login
+                      </a>
+                    </div>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                    <form action="{% url 'logout' %}" method="POST">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-danger btn-lg">
+                          <i class="bi bi-box-arrow-right"></i> Logout
+                      </button>
+                    </form>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+
+    </section>
+    <!-- end slider section -->
+{% endblock slider %}
+{% block main %}
