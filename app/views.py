@@ -54,3 +54,10 @@ def BookTableView(request):
         return redirect('dashboard')  # Redirect to the dashboard after saving the booking
 
     return render(request, 'book_table.html')
+
+def book_table_redirect(request):
+    messages.warning(request, "You need to login to book a table.")
+    return redirect('login')  # Redirecting to login page
+
+def FeedbackView(request):
+    return render(request, 'feedback.html')
