@@ -34,6 +34,7 @@ urlpatterns = [
     path('feedback',FeedbackView,name="Feedback"),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('signup/', signup, name='signup'),
+    path('dashboard/', dashboard, name='dashboard'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
