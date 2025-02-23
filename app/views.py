@@ -74,6 +74,12 @@ def signup(request):
 
     return render(request, 'signup.html', {'form': form})
 
+@login_required
+def dashboard(request):
+    user = request.user
+    bookings = user.bookings.all()  # Use 'bookings' instead of 'booking_set'
+    return render(request, 'dashboard.html', {'bookings': bookings})
+
 def LoginView(request):
     if request.method == 'POST':
         username = request.POST.get('username')
