@@ -32,6 +32,7 @@ urlpatterns = [
     path('menu',MenuView,name="Menu"),
     path('about',AboutView,name="About"),
     path('feedback',FeedbackView,name="Feedback"),
+    path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
