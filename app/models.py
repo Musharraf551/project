@@ -30,3 +30,13 @@ class Feedback(models.Model):
     
     def __str__(self):
         return self.User_name
+    
+class BookTable(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='bookings')  
+    Phone_number = models.IntegerField()
+    Email = models.EmailField()
+    Total_person = models.IntegerField()
+    booking_data = models.DateField()
+
+    def __str__(self):
+        return f"Booking by {self.user.username} on {self.booking_data}"
