@@ -21,3 +21,12 @@ class Items(models.Model):
     
 class AboutUs(models.Model):
     Description = models.TextField(blank=False)
+    
+class Feedback(models.Model):
+    User_name = models.CharField(max_length=15)
+    Description = models.TextField(blank=False)
+    Rating = models.IntegerField()
+    Image = models.ImageField(upload_to='items/', blank=True)
+    
+    def __str__(self):
+        return self.User_name
