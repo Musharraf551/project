@@ -62,6 +62,18 @@ def book_table_redirect(request):
 def FeedbackView(request):
     return render(request, 'feedback.html')
 
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your account has been created! Please log in.')
+            return redirect('login')
+    else:
+        form = UserCreationForm()
+
+    return render(request, 'signup.html', {'form': form})
+
 def LoginView(request):
     if request.method == 'POST':
         username = request.POST.get('username')
