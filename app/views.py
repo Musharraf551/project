@@ -91,3 +91,7 @@ def LoginView(request):
         else:
             messages.error(request, "Invalid username or password")
     return render(request, 'login.html')
+
+def LogoutView(request):
+    logout(request)  # Logs the user out
+    return redirect('Home')  # Redirects to the home page
