@@ -17,9 +17,9 @@
         <div class="row">
             <div class="col-md-6">
             <div class="form_container">
-                <form action="">
+                <form action="{% url "Feedback" %}" method='POST'>{% csrf_token %}
                 <div>
-                    <input type="text" class="form-control" name="user_name" required placeholder="Your Name" />
+                    <input type="text" class="form-control" name="User_name" required placeholder="Your Name" />
                 </div>
                 <div class="mb-3">
                     <textarea class="form-control" id="exampleFormControlTextarea1" name="Description" rows="3" required placeholder="Describe your experience here">
@@ -27,7 +27,7 @@
                 </div>
 
                 <div>
-                    <select class="form-control nice-select wide">
+                    <select class="form-control nice-select wide" required name = "Rating">
                     <option value="" disabled selected>
                         Please give us rating
                     </option>
@@ -50,7 +50,7 @@
                 </div>
                 <div>
                     <label for="formFileLg" class="form-label">Please select image</label>
-                    <input class="form-control form-control-lg" id="formFileLg" type="file">
+                    <input class="form-control form-control-lg" id="formFileLg" type="file" required name = "Image">
                   </div>
                 <div class="btn_box">
                     <button>
