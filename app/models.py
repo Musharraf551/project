@@ -18,3 +18,6 @@ class Items(models.Model):
     
     def __str__(self):
         return self.Item_name
+    
+class AboutUs(models.Model):
+    Description = models.TextField(blank=False)
