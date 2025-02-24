@@ -60,19 +60,9 @@ def book_table_redirect(request):
     messages.warning(request, "You need to login to book a table.")
     return redirect('login')  # Redirecting to login page
 
-# def FeedbackView(request):
-#     return render(request, 'feedback.html')
 def FeedbackView(request):
-    if request.method == 'POST':
-        form = FeedbackForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('Feedback')  # Redirect to a success page
+    return render(request, 'feedback.html')
 
-    else:
-        form = FeedbackForm()
-
-    return render(request, 'feedback.html', {'form': form})
 ##################################################
 
 def signup(request):
