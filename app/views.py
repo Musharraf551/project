@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from .models import BookTable
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from .forms import FeedbackForm
 
 # Create your views here.
 def HomeView(request):
@@ -59,8 +60,20 @@ def book_table_redirect(request):
     messages.warning(request, "You need to login to book a table.")
     return redirect('login')  # Redirecting to login page
 
+# def FeedbackView(request):
+#     return render(request, 'feedback.html')
 def FeedbackView(request):
-    return render(request, 'feedback.html')
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('Feedback')  # Redirect to a success page
+
+    else:
+        form = FeedbackForm()
+
+    return render(request, 'feedback.html', {'form': form})
+##################################################
 
 def signup(request):
     if request.method == 'POST':

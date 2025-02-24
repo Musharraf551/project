@@ -17,46 +17,36 @@
         <div class="row">
             <div class="col-md-6">
             <div class="form_container">
-                <form action="{% url "Feedback" %}" method='POST'>{% csrf_token %}
-                <div>
-                    <input type="text" class="form-control" name="User_name" required placeholder="Your Name" />
-                </div>
-                <div class="mb-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" name="Description" rows="3" required placeholder="Describe your experience here">
-                    </textarea>    
-                </div>
-
-                <div>
-                    <select class="form-control nice-select wide" required name = "Rating">
-                    <option value="" disabled selected>
-                        Please give us rating
-                    </option>
-                    <option value="">
-                        1
-                    </option>
-                    <option value="">
-                        2
-                    </option>
-                    <option value="">
-                        3
-                    </option>
-                    <option value="">
-                        4
-                    </option>
-                    <option value="">
-                        5
-                    </option>
-                    </select>
-                </div>
-                <div>
-                    <label for="formFileLg" class="form-label">Please select image</label>
-                    <input class="form-control form-control-lg" id="formFileLg" type="file" required name = "Image">
-                  </div>
-                <div class="btn_box">
-                    <button>
-                    submit
-                    </button>
-                </div>
+                <form action="{% url 'Feedback' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div>
+                        <input type="text" class="form-control" name="user_name" required placeholder="Your Name" />
+                    </div>
+                
+                    <div class="mb-3">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3" required placeholder="Describe your experience here"></textarea>    
+                    </div>
+                
+                    <div>
+                        <select class="form-control nice-select wide" required name="rating">
+                            <option value="" disabled selected>Please give us rating</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                
+                    <div>
+                        <label for="formFileLg" class="form-label">Please select image</label>
+                        <input class="form-control form-control-lg" id="formFileLg" type="file" required name="image">
+                    </div>
+                
+                    <div class="btn_box">
+                        <button type="submit">Submit</button>
+                    </div>
                 </form>
             </div>
             </div>
