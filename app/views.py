@@ -126,4 +126,10 @@ def cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
     total_price = sum(item.total_price() for item in cart_items)
     return render(request, 'cart.html', {'cart_items': cart_items, 'total_price': total_price})
+
+@login_required
+def remove_from_cart(request, product_id):
+    cart_item = get_object_or_404(CartItem, user=request.user, product_id=product_id)
+    cart_item.delete()
+    return redirect('cart_view')
     
