@@ -36,6 +36,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     path('signup/', signup, name='signup'),
     path('dashboard/', dashboard, name='dashboard'),
+    path('cart/', cart, name='cart'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)

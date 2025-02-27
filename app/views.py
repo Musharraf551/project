@@ -108,3 +108,7 @@ def LoginView(request):
 def LogoutView(request):
     logout(request)  # Logs the user out
     return redirect('Home')  # Redirects to the home page
+@login_required
+def cart(request):
+    return render(request, 'cart.html')
+    
