@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from app.models import BookTable, AboutUs, Feedback, ItemList, Items
 from app.models import BookTable
@@ -9,6 +9,7 @@ from .models import BookTable
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from .forms import FeedbackForm
+from .models import Product, CartItem
 
 # Create your views here.
 def HomeView(request):
@@ -108,7 +109,15 @@ def LoginView(request):
 def LogoutView(request):
     logout(request)  # Logs the user out
     return redirect('Home')  # Redirects to the home page
+
 @login_required
-def cart(request):
-    return render(request, 'cart.html')
+def cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    cart_item, created = CartItem.objects.get_or_create(user=request.user, product=product)
+
+    if not created:
+        cart_item.quantity += 1  # Increase quantity if item already exists
+    cart_item.save()
+    
+    return redirect('cart')  # Redirect to the cart page
     
