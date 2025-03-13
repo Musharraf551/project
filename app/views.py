@@ -9,7 +9,6 @@ from .models import BookTable
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from .forms import FeedbackForm
-from .models import Product, CartItem
 
 # Create your views here.
 def HomeView(request):
