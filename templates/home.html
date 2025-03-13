@@ -41,16 +41,6 @@
                       </button>
                     </form>
                     {% endif %}
-{% comment %} ------------------------------------------------------------                     {% endcomment %}
-                    {% if user.is_authenticated %}
-                    <form action="{% url 'cart' %}" method="POST">
-                      {% csrf_token %}
-                      <button type="submit" class="btn btn-secondary btn-lg">
-                          <i class="bi bi-box-arrow-right"></i> Cart
-                      </button>
-                    </form>
-                    {% endif %}
-{% comment %} -------------------------------------------------------------------------- {% endcomment %}
                   </div>
                 </div>
               </div>
