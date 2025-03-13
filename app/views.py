@@ -110,37 +110,7 @@ def LogoutView(request):
     logout(request)  # Logs the user out
     return redirect('Home')  # Redirects to the home page
 
-# @login_required
-# def add_to_cart(request, product_id):
-#     product = get_object_or_404(Product, id=product_id)
-#     cart_item, created = CartItem.objects.get_or_create(user=request.user, product=product)
 
-#     if not created:
-#         cart_item.quantity += 1  # Increase quantity if item already exists
-#     cart_item.save()
-    
-#     return redirect('cart')  # Redirect to the cart page
-
-@login_required
-def add_to_cart(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    
-    # Debugging: Check if product exists
-    print(f"✅ Product Found: {product.name} (ID: {product.id})")
-
-    # Try to get an existing cart item
-    cart_item, created = CartItem.objects.get_or_create(user=request.user, product=product)
-
-    if created:
-        print("🆕 New CartItem created!")
-    else:
-        cart_item.quantity += 1  # Increase quantity if already exists
-        print(f"🔄 Updated CartItem Quantity: {cart_item.quantity}")
-
-    cart_item.save()
-    print("💾 CartItem Saved Successfully!")
-
-    return redirect('cart')  # Redirect to the cart page
 
 
 
