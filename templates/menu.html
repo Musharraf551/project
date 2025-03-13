@@ -15,7 +15,7 @@
             </h2>
         </div>
     
-        {% comment %} <ul class="filters_menu">
+        <ul class="filters_menu">
             <li class="active" data-filter="*">All</li>
             {% for i in list %}
             <li data-filter=".{{i.Category_name}}">{{i.Category_name}}</li>
@@ -103,8 +103,10 @@
                 </div>
                 {% endfor %}
             </div>
-        </div> {% endcomment %}
-        <ul class="filters_menu">
+        </div>
+
+
+        {% comment %} <ul class="filters_menu">
             <li class="active" data-filter="*">All</li>
             {% for i in list %}
             <li data-filter=".{{ i.Category_name|slugify }}">{{ i.Category_name }}</li>
@@ -135,7 +137,7 @@
                 </div>
                 {% endfor %}
             </div>
-        </div>
+        </div> {% endcomment %}
         <div class="btn-box">
             <a href="">
             View More
